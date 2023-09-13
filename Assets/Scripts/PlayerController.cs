@@ -32,7 +32,7 @@ public class PlayerController : Common
         {
             Vector3 direction = Vector3.forward * floatingJoystick.Vertical + Vector3.right * floatingJoystick.Horizontal;
 
-            rb.velocity = direction * speed * Time.deltaTime;
+            transform.position += direction * speed * Time.deltaTime;
 
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), 10f * Time.deltaTime);
 
@@ -40,7 +40,6 @@ public class PlayerController : Common
         }
         else
         {
-            rb.velocity = Vector3.zero;
             anim.SetBool("_isRunning", false);
         }
 
